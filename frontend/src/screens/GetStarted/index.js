@@ -1,9 +1,11 @@
 import React from 'react'
 import { Image, StyleSheet, Text, View } from 'react-native'
-import { colors } from '../../res'
+import Button from '../../components/atoms/Button'
+import Gap from '../../components/atoms/Gap'
+import { colors, fonts } from '../../res'
 import { GetStartedImg_PNG } from '../../res/images'
 
-const GetStarted = () => {
+const GetStarted = ({navigation}) => {
   return (
     <View style={styles.container_IMG}>
       <Image source={GetStartedImg_PNG} style={styles.img} />
@@ -18,6 +20,8 @@ const GetStarted = () => {
           optio, eaque rerum! Provident similique accusantium nemo autem.
         </Text>
       </View>
+      <Gap height={30} />
+      <Button onPress={() => navigation.replace('MainApp')} />
     </View>
   )
 }
@@ -39,16 +43,18 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center'
   },
-  titleStarted:{
+  titleStarted: {
     fontSize: 28,
     color: colors.black_Fail,
-    textAlign: 'center'
+    textAlign: 'center',
+    fontFamily: fonts.Bold
   },
   textStarted: {
     fontSize: 14,
     marginTop: 15,
     marginHorizontal: 28,
     color: colors.grey,
-    textAlign: 'center'
-  }
+    textAlign: 'center',
+    fontFamily: fonts.Bold
+  },
 })
