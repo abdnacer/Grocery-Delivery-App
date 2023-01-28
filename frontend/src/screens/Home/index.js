@@ -1,10 +1,13 @@
 import React from 'react'
-import { SafeAreaView, StatusBar, StyleSheet, Text, View, ScrollView, TextInput } from 'react-native'
+import { SafeAreaView, StatusBar, StyleSheet, Text, View, ScrollView, TextInput, TouchableOpacity } from 'react-native'
 import { useColorScheme } from 'react-native/Libraries/Utilities/Appearance'
+import Gap from '../../components/atoms/Gap'
 import BoxItemCategories from '../../components/molecules/BoxItemCategories'
+import BoxItemTopProduct from '../../components/molecules/BoxItemTopProduct'
 import Header from '../../components/molecules/Header'
-import { colors, fonts, IL_Grapes_PNG } from '../../res'
+import { colors, fonts } from '../../res'
 import { IC_Bakery, IC_Bakery2, IC_Drinks, IC_Fruits, IC_Search, IC_Vegetables } from '../../res/images/icons'
+import { IL_Cauliflawer_PNG, IL_Grapes_PNG, IL_Greentea_PNG, IL_Tomato_PNG } from '../../res/images/ilustrator'
 
 const Home = ({ navigation }) => {
 
@@ -19,9 +22,23 @@ const Home = ({ navigation }) => {
       description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
     },
     {
-      name: 'Grapes',
-      icon: IL_Grapes_PNG,
-      bgColor: 'rgba(277,206,243, 0.5)',
+      name: 'Tometo',
+      icon: IL_Tomato_PNG,
+      bgColor: 'rgba(140,250,145, 0.5)',
+      price: 1.53,
+      description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
+    },
+    {
+      name: 'Drinks',
+      icon: IL_Greentea_PNG,
+      bgColor: 'rgba(187,208,136, 0.5)',
+      price: 1.53,
+      description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
+    },
+    {
+      name: 'Cauliflower',
+      icon: IL_Cauliflawer_PNG,
+      bgColor: 'rgba(255,234,232, 1)',
       price: 1.53,
       description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
     },
@@ -33,9 +50,23 @@ const Home = ({ navigation }) => {
       description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
     },
     {
-      name: 'Grapes',
-      icon: IL_Grapes_PNG,
-      bgColor: 'rgba(277,206,243, 0.5)',
+      name: 'Tometo',
+      icon: IL_Tomato_PNG,
+      bgColor: 'rgba(140,250,145, 0.5)',
+      price: 1.53,
+      description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
+    },
+    {
+      name: 'Drinks',
+      icon: IL_Greentea_PNG,
+      bgColor: 'rgba(187,208,136, 0.5)',
+      price: 1.53,
+      description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
+    },
+    {
+      name: 'Cauliflower',
+      icon: IL_Cauliflawer_PNG,
+      bgColor: 'rgba(255,234,232, 1)',
       price: 1.53,
       description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
     },
@@ -94,9 +125,28 @@ const Home = ({ navigation }) => {
               />
             </ScrollView>
           </View>
+          <Gap height={25} />
           {/* Product */}
           <View>
-             
+            <View style={styles.wrapperHeadTopProduct}>
+              <Text style={styles.titleTopProduct}>Top Products</Text>
+              <TouchableOpacity>
+                <Text style={styles.textSeeAll}>See All</Text>
+              </TouchableOpacity>
+            </View>
+            <View style={styles.sectionBoxTopProduct}>
+               {dataTopProducts.map((item, index) => {
+                return (
+                  <BoxItemTopProduct
+                    key={index}
+                    bgColor={item.bgColor}
+                    icon={item.icon}
+                    text={item.name}
+                    price={item.price}
+                  />
+                );
+              })} 
+            </View>
           </View>
         </ScrollView>
       </View>
@@ -128,4 +178,26 @@ const styles = StyleSheet.create({
   scrollViewCategories: {
     paddingLeft: 20,
   },
+  wrapperHeadTopProduct: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    paddingHorizontal: 20,
+    marginBottom: 10,
+  },
+  titleTopProduct: {
+    color: colors.primary,
+    fontFamily: fonts.SemiBold,
+    fontSize: 20,
+  },
+  textSeeAll: {
+    color: colors.black_Fail,
+    fontFamily: fonts.Medium,
+    fontSize: 12
+  },
+  sectionBoxTopProduct: {
+    flex:1,
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'center',
+  }
 })

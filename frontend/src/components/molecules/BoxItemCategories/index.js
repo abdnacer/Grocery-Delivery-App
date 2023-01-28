@@ -1,8 +1,8 @@
 import React from 'react';
-import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
-import {colors, fonts} from '../../../res';
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { colors, fonts } from '../../../res';
 
-const BoxItemCategories = ({text, color, icon, onPress}) => {
+const BoxItemCategories = ({ text, color, icon, onPress }) => {
   return (
     <TouchableOpacity style={styles.container} onPress={onPress}>
       <View style={styles.wrapperImg(color)}>{icon}</View>
