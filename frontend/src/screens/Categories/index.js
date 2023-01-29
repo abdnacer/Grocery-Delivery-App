@@ -1,8 +1,8 @@
 import React from 'react'
-import { StyleSheet, Text, View, SafeAreaView, StatusBar, ScrollView } from 'react-native'
+import { StyleSheet, Text, View, SafeAreaView, navigate, StatusBar, ScrollView } from 'react-native'
 import { useColorScheme } from 'react-native/Libraries/Utilities/Appearance'
 import Gap from '../../components/atoms/Gap'
-import BoxItemCategories from '../../components/molecules/BoxItemCategories'
+// import BoxItemCategories from '../../components/molecules/BoxItemCategories'
 import BoxItemTopProduct from '../../components/molecules/BoxItemTopProduct'
 import Header from '../../components/molecules/Header'
 import { colors, fonts } from '../../res'
@@ -57,31 +57,34 @@ const Categories = ({ route, navigation }) => {
     },
   ]
   return (
-    <SafeAreaView style={styles.flex1}>
-      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <View style={styles.flex1}>
-        <Header back cart onPress={() => navigation.goBack()} />
-        <View style={styles.wrapperTitle}>
-          <Text style={styles.title}>{route.params}</Text>
+    <ScrollView>
+      <SafeAreaView style={styles.flex1}>
+        <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
+        <View style={styles.flex1}>
+          <Header back cart onPress={() => navigation.goBack()} />
+          <View style={styles.wrapperTitle}>
+            <Text style={styles.title}>{route.params}</Text>
+          </View>
+          <Gap height={10} />
+          {/* Content */}
+          <ScrollView showsVerticalScrollIndicator={false}></ScrollView>
+          <View style={styles.sectionBoxTopProduct}>
+            {dataCategories.map((item, index) => {
+              return (
+                <BoxItemTopProduct
+                  key={index}
+                  bgColor={item.bgColor}
+                  icon={item.icon}
+                  text={item.name}
+                  price={item.price}
+                  onPress={() => navigation.navigate('Details', item)}
+                />
+              )
+            })}
+          </View>
         </View>
-        <Gap height={10} />
-        {/* Content */}
-        <ScrollView showsVerticalScrollIndicator={false}></ScrollView>
-        <View style={styles.sectionBoxTopProduct}>
-          {dataCategories.map((item, index) => {
-            return (
-              <BoxItemTopProduct
-                key={index}
-                bgColor={item.bgColor}
-                icon={item.icon}
-                text={item.name}
-                price={item.price}
-              />
-            )
-          })}
-        </View>
-      </View>
-    </SafeAreaView>
+      </SafeAreaView>
+    </ScrollView>
   )
 }
 

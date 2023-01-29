@@ -2,7 +2,7 @@ import React from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { Favorite, GetStarted, Home, Categories, Notification, Profile } from '../screens';
+import { Favorite, GetStarted, Home, Categories, Notification, Profile, Details } from '../screens';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import BottomNavigator from '../components/molecules/BottomNavigator';
 // import Categories from '../screens/Categories';
@@ -28,6 +28,7 @@ const Router = () => {
       <Stack.Screen name="GetStarted" component={GetStarted} options={{ headerShown: false }} />
       <Stack.Screen name="MainApp" component={MainApp} options={{ headerShown: false }} />
       <Stack.Screen name="Categories" component={Categories} options={{ headerShown: false }} />
+      <Stack.Screen name="Details" component={Details} options={{ headerShown: false }} />
     </Stack.Navigator>
   )
 }
