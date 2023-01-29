@@ -1,5 +1,7 @@
 import { React, useState } from 'react'
 import { ScrollView, SafeAreaView, StyleSheet, Text, useColorScheme, StatusBar, View, Image } from 'react-native'
+import Button from '../../components/atoms/Button'
+import Gap from '../../components/atoms/Gap'
 import BoxRelatedItems from '../../components/molecules/BoxRelatedItems'
 import Counter from '../../components/molecules/Counter'
 import Header from '../../components/molecules/Header'
@@ -76,7 +78,7 @@ const Details = ({ route, navigation }) => {
             <Text style={styles.titleRelated}>Related Items</Text>
             {/* ScrollView */}
             <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-              <View style={{ flexDirection: 'row', marginTop: 20, paddingLeft: 20 }}>
+              <View style={styles.wrapperBoxRelated}>
                 {/* BoxRelatedItem */}
                 {dataRelated.map((itemRelated, index) => (
                   <BoxRelatedItems
@@ -89,6 +91,9 @@ const Details = ({ route, navigation }) => {
               </View>
             </ScrollView>
           </View>
+          {/* Button Add To Cart */}
+          <Gap height={5} />
+          <Button text_Btn="Add To Cart" />
         </View>
       </View>
     </SafeAreaView>
@@ -148,5 +153,10 @@ const styles = StyleSheet.create({
     fontSize: 14,
     color: colors.primary,
     paddingHorizontal: 20,
+  },
+  wrapperBoxRelated: {
+    flexDirection: 'row',
+    marginTop: 20,
+    paddingLeft: 20
   }
 })
